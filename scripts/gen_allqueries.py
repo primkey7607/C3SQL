@@ -12,5 +12,5 @@ def generate_allsql(indir, inprefix, outprefix):
             os.system(cmd)
 
 if __name__=='__main__':
-    generate_allsql('.', 'testtemp', '../testsql')
+    generate_allsql('.', '../testtemp', '../testsql')
 
