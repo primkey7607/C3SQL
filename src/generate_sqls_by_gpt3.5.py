@@ -130,7 +130,7 @@ if __name__ == '__main__':
                 input = item['input_sequence']
                 messages.append({"role": "user", "content": input})
                 p_sql = generate_reply(messages, 1)[0]
-                p_sql = 'SELECT ' + p_sql
+                # p_sql = 'SELECT ' + p_sql
                 p_sql = p_sql.replace("SELECT SELECT", "SELECT")
                 p_sql = fix_select_column(p_sql)
                 p_sql = p_sql.replace("> =", ">=").replace("< =", "<=").replace("! =", "!=")
