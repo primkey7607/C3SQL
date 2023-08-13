@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import os
+import random
 
 administrators = [
     "System Administrator",
@@ -70,7 +71,8 @@ def gen_questions(dirname, outname, roles, tables, privileges):
 
 if __name__=='__main__':
     csv_dir = os.path.expanduser('~/tpch-kit/scale1data/tpchcsvs')
-    gen_questions(csv_dir, 'testgen', ['Office_Administrator'], ['customer'], ['SELECT'])
+    random.seed(3)
+    gen_questions(csv_dir, 'testgen', random.sample(admin_lst, k=25), ['customer', 'lineitem'], ['SELECT', 'INSERT'])
     
             
             
