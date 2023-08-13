@@ -46,7 +46,7 @@ Gold SQL should be: select A from X where award = 'B' intersect select A from X 
 def parse_option():
     parser = argparse.ArgumentParser("command line arguments for generate sqls")
     parser.add_argument("--input_dataset_path", type=str)
-    parser.add_argument("--self_consistent", type=bool, default=True)
+    parser.add_argument("--self_consistent", action='store_true')
     parser.add_argument("--n", type=int, default=20,
                         help="Size of self-consistent set")
     parser.add_argument("--output_dataset_path", type=str)
