@@ -10,7 +10,7 @@ from get_selfconsistent_output import get_sqls
 from tqdm import tqdm
 
 # add your openai api key
-openai.api_key = "sk-"
+# openai.api_key = "sk-"
 
 chat_prompt = [
     {
@@ -123,7 +123,7 @@ if __name__ == '__main__':
     if not opt.self_consistent:
         for i, item in enumerate(data):
             print("id", i)
-            db_dir = opt.db_dir + '/' + item['db_id'] + '/' + item['db_id'] + '.sqlite'
+            # db_dir = opt.db_dir + '/' + item['db_id'] + '/' + item['db_id'] + '.sqlite'
             for j in range(5):
                 messages = []
                 messages = chat_prompt.copy()
@@ -135,18 +135,20 @@ if __name__ == '__main__':
                 p_sql = fix_select_column(p_sql)
                 p_sql = p_sql.replace("> =", ">=").replace("< =", "<=").replace("! =", "!=")
                 print(f'p_sql: {p_sql}')
-                if is_valid(p_sql, db_dir):
-                    break
-                else:
-                    print(f're_id: {j} p_sql: {p_sql} exec error...')
-                    time.sleep(0.5)
-                    if j < 4:
-                        print(f'generate again')
+                #no need for the repeat logic right now--just see how well this works.
+                break
+                # if is_valid(p_sql, db_dir):
+                #     break
+                # else:
+                #     print(f're_id: {j} p_sql: {p_sql} exec error...')
+                #     time.sleep(0.5)
+                #     if j < 4:
+                #         print(f'generate again')
             p_sql_final.append(p_sql)
             print(p_sql_final)
     else:
         for i, item in enumerate(tqdm(data)):
-            db_dir = opt.db_dir + '/' + item['db_id'] + '/' + item['db_id'] + '.sqlite'
+            # db_dir = opt.db_dir + '/' + item['db_id'] + '/' + item['db_id'] + '.sqlite'
             p_sqls = []
             for j in range(5):
                 messages = []
@@ -178,15 +180,16 @@ if __name__ == '__main__':
                         p_sql = p_sql.replace("  ", " ")
                     temp.append(p_sql)
                 p_sqls = temp
-                if is_valid(p_sqls[0], db_dir):
-                    break
-                else:
-                    print(f're_id: {j} p_sql: {p_sqls[0]} exec error...')
-                    time.sleep(0.5)
-                    if j < 4:
-                        print(f'generate again')
+                break
+                # if is_valid(p_sqls[0], db_dir):
+                #     break
+                # else:
+                #     print(f're_id: {j} p_sql: {p_sqls[0]} exec error...')
+                #     time.sleep(0.5)
+                #     if j < 4:
+                #         print(f'generate again')
             result = {}
-            result['db_id'] = item['db_id']
+            # result['db_id'] = item['db_id']
             result['question'] = item['question']
             result['p_sqls'] = []
             for sql in p_sqls:
