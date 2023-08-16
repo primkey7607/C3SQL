@@ -39,7 +39,19 @@ Gold SQL should be: select A from X where award = 'B' intersect select A from X 
     {
         "role": "assistant",
         "content": "Thank you for the tip! I'll remember to use \"INTERSECT\" or \"EXCEPT\" instead of \"IN\", \"OR\", or \"LEFT JOIN\" when I want to find records that match or don't match across two tables. Additionally, I'll make sure to use \"DISTINCT\" or \"LIMIT\" when necessary to avoid repetitive results or limit the number of results returned."
+    },
+    {
+        "role": "user",
+        "content": """Tips 3: Don't forget to use WITH GRANT OPTION when necessary.
+For example,
+Question: Grant role A SELECT access to table T with the option of passing on this privilege.
+Gold SQL should be: grant select on T to A with grant option;"""
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for the tip! I'll keep in mind that when the question indicates that the grantee should be able to pass on the privileges they are being granted, I will suffix the GRANT statement with WITH GRANT OPTION."
     }
+
 ]
 
 
