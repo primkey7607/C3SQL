@@ -80,7 +80,7 @@ def gen_questions_from_docs(doc_dir, table_dir, outname):
             doc = nlp(doc_st)
             for i,sent in enumerate(doc.sents):
                 get_tabcols(table_dir, sent.text, outname + '_doc' + str(doc_cnt) + '_sent' + str(i))
-            
+            doc_cnt += 1
 
 if __name__=='__main__':
     csv_dir = os.path.expanduser('~/tpch-kit/scale1data/tpchcsvs')
