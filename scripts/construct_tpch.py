@@ -79,7 +79,7 @@ def gen_questions_from_docs(doc_dir, table_dir, outname):
                 doc_st = fh.read()
             doc = nlp(doc_st)
             for i,sent in enumerate(doc.sents):
-                get_tabcols(table_dir, sent, outname + '_doc' + str(doc_cnt) + '_sent' + str(i))
+                get_tabcols(table_dir, sent.text, outname + '_doc' + str(doc_cnt) + '_sent' + str(i))
             
 
 if __name__=='__main__':
