@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import os
 import random
+import spacy
 
 administrators = [
     "System Administrator",
@@ -69,11 +70,28 @@ def gen_questions(dirname, outname, roles, tables, privileges):
                 get_tabcols(dirname, question, outname + str(cnt))
                 cnt += 1
 
+def gen_questions_from_docs(doc_dir, table_dir, outname):
+    nlp = spacy.load("en_core_web_sm")
+    doc_cnt = 0
+    for f in os.listdir(doc_dir):
+        if f.endswith('.txt'):
+            with open(os.path.join(doc_dir, f)) as fh:
+                doc_st = fh.read()
+            doc = nlp(doc_st)
+            for i,sent in enumerate(doc.sents):
+                get_tabcols(table_dir, sent, outname + '_doc' + str(doc_cnt) + '_sent' + str(i))
+            
+
 if __name__=='__main__':
     csv_dir = os.path.expanduser('~/tpch-kit/scale1data/tpchcsvs')
-    random.seed(3)
-    gen_questions(csv_dir, 'testgen', random.sample(admin_lst, k=25), ['customer', 'lineitem'], ['SELECT', 'INSERT'])
-    
+    # random.seed(3)
+    # gen_questions(csv_dir, 'testgen', random.sample(admin_lst, k=25), ['customer', 'lineitem'], ['SELECT', 'INSERT'])
+    gen_questions_from_docs('../automatedgov/q1readonly/docs', csv_dir, 'q1readonly')
+    gen_questions_from_docs('../automatedgov/q2readwrite/docs', csv_dir, 'q2readwrite')
+    gen_questions_from_docs('../automatedgov/q3complex/docs', csv_dir, 'q3complex')
+    gen_questions_from_docs('../automatedgov/q4dac/docs', csv_dir, 'q4dac')
+    gen_questions_from_docs('../automatedgov/q5complexview/docs', csv_dir, 'q5complexview')
+    gen_questions_from_docs('../automatedgov/q6dacview/docs', csv_dir, 'q6dacview')
             
             
             
