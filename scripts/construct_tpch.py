@@ -86,12 +86,12 @@ if __name__=='__main__':
     csv_dir = os.path.expanduser('~/tpch-kit/scale1data/tpchcsvs')
     # random.seed(3)
     # gen_questions(csv_dir, 'testgen', random.sample(admin_lst, k=25), ['customer', 'lineitem'], ['SELECT', 'INSERT'])
-    gen_questions_from_docs('../automatedgov/q1readonly/docs', csv_dir, 'q1readonly')
-    gen_questions_from_docs('../automatedgov/q2readwrite/docs', csv_dir, 'q2readwrite')
-    gen_questions_from_docs('../automatedgov/q3complex/docs', csv_dir, 'q3complex')
-    gen_questions_from_docs('../automatedgov/q4dac/docs', csv_dir, 'q4dac')
-    gen_questions_from_docs('../automatedgov/q5complexview/docs', csv_dir, 'q5complexview')
-    gen_questions_from_docs('../automatedgov/q6dacview/docs', csv_dir, 'q6dacview')
+    gen_questions_from_docs('../automatedgov/q1readonly/docs', csv_dir, 'q1exp/q1readonly')
+    gen_questions_from_docs('../automatedgov/q2readwrite/docs', csv_dir, 'q2exp/q2readwrite')
+    gen_questions_from_docs('../automatedgov/q3complex/docs', csv_dir, 'q3exp/q3complex')
+    gen_questions_from_docs('../automatedgov/q4dac/docs', csv_dir, 'q4exp/q4dac')
+    gen_questions_from_docs('../automatedgov/q5complexview/docs', csv_dir, 'q5exp/q5complexview')
+    gen_questions_from_docs('../automatedgov/q6dacview/docs', csv_dir, 'q6exp/q6dacview')
             
             
             
