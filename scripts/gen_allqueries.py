@@ -13,10 +13,10 @@ def generate_allsql(indir, inprefix, outprefix):
 
 if __name__=='__main__':
     # generate_allsql('../', 'testtemp', '../testsql')
-    generate_allsql('../q1exp', 'q1readonly', '../q1sql')
-    generate_allsql('../q2exp', 'q2readwrite', '../q2sql')
-    generate_allsql('../q3exp', 'q3complex', '../q3sql')
-    generate_allsql('../q4exp', 'q4dac', '../q4sql')
-    generate_allsql('../q5exp', 'q5complexview', '../q5sql')
-    generate_allsql('../q6exp', 'q6dacview', '../q6sql')
+    generate_allsql('../q1exp', 'q1exp', '../q1sql')
+    generate_allsql('../q2exp', 'q2exp', '../q2sql')
+    generate_allsql('../q3exp', 'q3exp', '../q3sql')
+    generate_allsql('../q4exp', 'q4exp', '../q4sql')
+    generate_allsql('../q5exp', 'q5exp', '../q5sql')
+    generate_allsql('../q6exp', 'q6exp', '../q6sql')
 
