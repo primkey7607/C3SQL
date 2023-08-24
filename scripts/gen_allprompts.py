@@ -10,6 +10,12 @@ def generate_allprompts(indir, inprefix, outprefix):
             os.system(cmd)
 
 if __name__=='__main__':
-    generate_allprompts('.', 'testgen', 'testtemp')
+    # generate_allprompts('.', 'testgen', 'testtemp')
+    generate_allprompts('../q1raw', 'q1readonly', '../q1exp')
+    generate_allprompts('../q2raw', 'q2readwrite', '../q2exp')
+    generate_allprompts('../q3raw', 'q3complex', '../q3exp')
+    generate_allprompts('../q4raw', 'q4dac', '../q4exp')
+    generate_allprompts('../q5raw', 'q5complexview', '../q5exp')
+    generate_allprompts('../q6raw', 'q6dacview', '../q6exp')
 
 
